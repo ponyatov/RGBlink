@@ -1,0 +1,34 @@
+Any USB serial:
+
+++hardware/arduino/avr/etc/avrdude.conf:
+
+programmer
+  id    = "invdasa";
+  desc  = "serial port banging, reset=!rts sck=!dtr mosi=!txd miso=!cts";
+  type  = "serbb";
+  connection_type = serial;
+  reset = ~7;
+  sck   = ~4;
+  mosi  = ~3;
+  miso  = ~8;
+;
+
+RGB:		USBserial:
+
+1 MISO		CTS
+2 VCC3.3	3.3V
+3 SCK		DTR
+4 MOSI		TXD
+5 RST		RTS
+6 GND		GND
+
+++hardware/arduino/avr/programmers.txt:
+
+bitbang.name=Serial BitBang
+bitbang.protocol=invdasa
+bitbang.program.tool=avrdude
+bitbang.program.extra_params=-P\\.\{serial.port}
+
+C:\AVR\Arduino\hardware\tools\avr>bin\avrdude.exe -C etc\avrdude.conf
+-c invdasa -p m328 -P \\.\COM10 -n
+
