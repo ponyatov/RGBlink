@@ -7,10 +7,10 @@ programmer
   desc  = "serial port banging, reset=!rts sck=!dtr mosi=!txd miso=!cts";
   type  = "serbb";
   connection_type = serial;
-  reset = ~7;
-  sck   = ~4;
-  mosi  = ~3;
-  miso  = ~8;
+  reset = ~7; # RTS
+  sck   = ~4; # DTR
+  mosi  = ~3; # TXD
+  miso  = ~8; # CTS
 ;
 
 RGB:		USBserial:
