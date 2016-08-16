@@ -29,6 +29,16 @@ bitbang.protocol=invdasa
 bitbang.program.tool=avrdude
 bitbang.program.extra_params=-P\\.\{serial.port}
 
+prefix: 
 C:\AVR\Arduino\hardware\tools\avr>bin\avrdude.exe -C etc\avrdude.conf
--c invdasa -p m328 -P \\.\COM10 -n
+-c invdasa -p m328 -P \\.\COM10 
+
+suffixes:
+
+-n
+
+-e -Ulock:w:0x3F:m -Uefuse:w:0x05:m -Uhfuse:w:0xDA:m -Ulfuse:w:0xFF:m
+
+-Uflash:w:C:\AVR\Arduino\hardware\arduino\avr/bootloaders/atmega/ATmegaBOOT_168_atmega328_pro_8MHz.hex:i -Ulock:w:0x0F:m
+
 
